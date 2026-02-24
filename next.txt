@@ -3,110 +3,672 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="jeTn4wcapMELYB0_EwelZmAoGnW9QSTZW59s32w6AQE" />
-    <title>NextChain Store - 智能商品展示</title>
+    <title>儿童成长发育保健品新品定制化规划</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        /* 莫兰迪科技感配色定义 - 调整为适合母婴/健康的自然温和色系 */
+        :root {
+            --color-main: #7ba3a8;       /* 嫩芽青 - 主色 (生长/健康/安全) */
+            --color-accent: #e8b77b;     /* 暖阳黄 - 强调色 (活力/骨骼/阳光) */
+            --color-light: #f0f4f1;      /* 燕麦白 - 辅助色 */
+            --color-bg: #f8fbf9;         /* 背景淡青 */
+            --color-card: #ffffff;       /* 卡片白 */
+            --color-text-main: #3a4a4d;  /* 深灰绿 - 文字 */
+            --color-text-sub: #829496;   /* 浅灰绿 - 文字 */
+        }
+        
+        body { background-color: var(--color-bg); color: var(--color-text-main); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        .bg-morandi-main { background-color: var(--color-main); }
+        .bg-morandi-accent { background-color: var(--color-accent); }
+        .text-morandi-main { color: var(--color-main); }
+        .text-morandi-accent { color: var(--color-accent); }
+        .border-morandi-main { border-color: var(--color-main); }
+        
+        /* 隐藏滚动条但保留功能 */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .nav-item { transition: all 0.3s ease; }
+        .nav-item:hover { color: var(--color-main); }
+        
+        /* 简单的淡入动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
     </style>
 </head>
-<body class="bg-gray-50">
-    <!-- 导航 -->
-    <nav class="gradient-bg text-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-4">
+<body class="antialiased">
+
+    <!-- 顶部吸顶导航 -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
-                <h1 class="text-xl font-bold">NextChain Store</h1>
-                <div class="flex space-x-6">
-                    <a href="#" class="hover:text-blue-200">首页</a>
-                    <a href="#products" class="hover:text-blue-200">商品</a>
-                    <a href="#about" class="hover:text-blue-200">关于</a>
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <!-- 简单的图标: 嫩芽/盾牌意向 -->
+                    <svg class="w-8 h-8 text-morandi-main" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 3L4 9v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V9l-8-6zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V14H5V9.98l7-5.25v9.26z" opacity=".3"/>
+                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                    </svg>
+                    <span class="text-xl font-bold text-morandi-main tracking-tight">京东 C2M | 儿童成长保健品规划</span>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <a href="#core" class="nav-item px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-morandi-accent">核心思想</a>
+                    <a href="#trends" class="nav-item px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-morandi-accent">趋势洞察</a>
+                    <a href="#painpoints" class="nav-item px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-morandi-accent">痛点狙击</a>
+                    <a href="#premium" class="nav-item px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-morandi-accent">溢价分析</a>
+                    <a href="#strategy" class="nav-item px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-morandi-accent">战略产品</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <div class="gradient-bg text-white py-20 text-center">
-        <h2 class="text-4xl font-bold mb-4">智能商品推荐</h2>
-        <p class="text-xl opacity-90">AI 驱动的个性化购物体验</p>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <!-- 1. 核心指导思想 -->
+        <section id="core" class="scroll-mt-24">
+            <h2 class="text-2xl font-bold mb-6 text-morandi-main flex items-center">
+                <span class="w-1.5 h-8 bg-morandi-accent mr-3 rounded-full"></span>
+                核心指导思想
+            </h2>
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 border border-gray-100">
+                <p class="text-xl text-gray-700 leading-relaxed font-serif text-center md:text-left">
+                    儿童保健品市场正从“父母按头喂药”向<span class="text-morandi-main font-bold">“孩子主动索要的健康零食”</span>转型。C2M策略应深度聚焦<span class="bg-blue-50 px-2 py-1 rounded text-blue-800 font-bold mx-1">协同吸收（1+1>2）</span> + <span class="bg-yellow-50 px-2 py-1 rounded text-yellow-800 font-bold mx-1">零食化剂型（无糖软糖/滴剂）</span> + <span class="bg-green-50 px-2 py-1 rounded text-green-800 font-bold mx-1">极净标签（0激素0敏）</span>三大核心进行定制。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 核心卡片 1 -->
+                <div class="group bg-white rounded-xl shadow-md p-6 border-t-4 border-morandi-main hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="text-xs font-bold text-morandi-accent uppercase mb-3 tracking-widest">CORE STRATEGY 01</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-morandi-main transition-colors">吸收革命 - [协同配方]</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">打破单一补钙/补脑，主推“钙+D3+K2”引钙入骨、“DHA+叶黄素”脑眼同补的科学配方，解决“吃了没效果”的吸收痛点。</p>
+                </div>
+                <!-- 核心卡片 2 -->
+                <div class="group bg-white rounded-xl shadow-md p-6 border-t-4 border-morandi-main hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="text-xs font-bold text-morandi-accent uppercase mb-3 tracking-widest">CORE STRATEGY 02</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-morandi-main transition-colors">剂型破圈 - [好吃无糖]</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">彻底抛弃吞咽困难的药片/胶囊。开发果胶软糖、直饮果泥、便携滴剂，采用木糖醇/赤藓糖醇防龋齿，让孩子爱上吃营养。</p>
+                </div>
+                <!-- 核心卡片 3 -->
+                <div class="group bg-white rounded-xl shadow-md p-6 border-t-4 border-morandi-main hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="text-xs font-bold text-morandi-accent uppercase mb-3 tracking-widest">CORE STRATEGY 03</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 group-hover:text-morandi-main transition-colors">安全底线 - [极净标签]</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">直击“性早熟/重金属”焦虑。承诺0激素、0人工色素防腐剂，避开常见过敏原（无麸质/无明胶），提供第三方权威质检。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 趋势洞察 -->
+        <section id="trends" class="scroll-mt-24">
+            <h2 class="text-2xl font-bold mb-6 text-morandi-main flex items-center">
+                <span class="w-1.5 h-8 bg-morandi-accent mr-3 rounded-full"></span>
+                趋势洞察：市场与用户意图分析
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- 图表 A -->
+                <div class="bg-white rounded-xl shadow-lg p-5 flex flex-col">
+                    <h3 class="text-lg font-bold text-gray-700 mb-4 pl-2 border-l-2 border-morandi-main">A. 搜索焦点转移趋势 (TOP 5)</h3>
+                    <div class="relative h-64 w-full flex-grow">
+                        <canvas id="chartA"></canvas>
+                    </div>
+                    <div class="mt-4 bg-blue-50 p-3 rounded-lg border border-blue-100">
+                        <p class="text-xs text-blue-800 font-medium leading-relaxed">
+                            <span class="font-bold">✨ 规划建议：</span> “基础补钙/鱼油”搜索下滑，“身高管理(K2)”、“藻油DHA”及“无糖软糖”成为新一代“成分党”妈妈的检索核心。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 图表 B -->
+                <div class="bg-white rounded-xl shadow-lg p-5 flex flex-col">
+                    <h3 class="text-lg font-bold text-gray-700 mb-4 pl-2 border-l-2 border-morandi-accent">B. 购买驱动力结构预测</h3>
+                    <div class="relative h-64 w-full flex-grow">
+                        <canvas id="chartB"></canvas>
+                    </div>
+                    <div class="mt-4 bg-yellow-50 p-3 rounded-lg border border-yellow-100">
+                        <p class="text-xs text-yellow-800 font-medium leading-relaxed">
+                            <span class="font-bold">✨ 规划建议：</span> 妈妈为“配方吸收率/安全性”买单，孩子为“口感剂型”投票。“孩子爱吃”是持续复购的最强动力。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 图表 C -->
+                <div class="bg-white rounded-xl shadow-lg p-5 flex flex-col">
+                    <h3 class="text-lg font-bold text-gray-700 mb-4 pl-2 border-l-2 border-morandi-main">C. 意图与转化对比 (C2M机会)</h3>
+                    <div class="relative h-64 w-full flex-grow">
+                        <canvas id="chartC"></canvas>
+                    </div>
+                    <div class="mt-4 bg-green-50 p-3 rounded-lg border border-green-100">
+                        <p class="text-xs text-green-800 font-medium leading-relaxed">
+                            <span class="font-bold">✨ 规划建议：</span> “防龋齿无糖营养软糖”和“不腥的藻油DHA”供需缺口极大，市场充斥着披着保健品外衣的普通高糖零食。
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- 3. 痛点狙击 -->
+        <section id="painpoints" class="scroll-mt-24">
+            <h2 class="text-2xl font-bold mb-4 text-morandi-main flex items-center">
+                <span class="w-1.5 h-8 bg-morandi-accent mr-3 rounded-full"></span>
+                痛点狙击：儿童营养品 C2M 定制引擎
+            </h2>
+            <p class="text-gray-600 mb-6 pl-4">
+                核心痛点集中在<span class="font-bold text-morandi-main">“孩子抗拒/腥味重”、“含糖致龋齿”和“补了不吸收/便秘”</span>。点击下方列表，查看定制化解决方案。
+            </p>
+
+            <div class="flex flex-col md:flex-row bg-white rounded-2xl shadow-xl overflow-hidden min-h-[450px] border border-gray-100">
+                <!-- 左侧列表 -->
+                <div class="w-full md:w-1/3 bg-gray-50 border-r border-gray-100">
+                    <ul id="painPointList" class="divide-y divide-gray-200">
+                        <!-- JS将在此处渲染列表 -->
+                    </ul>
+                </div>
+                
+                <!-- 右侧详情 -->
+                <div class="w-full md:w-2/3 p-8 flex flex-col justify-center bg-white relative">
+                    <div id="painPointDetail" class="space-y-6">
+                        <!-- JS将在此处渲染详情 -->
+                    </div>
+                    <!-- 装饰背景元素 -->
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-morandi-accent opacity-5 rounded-bl-full pointer-events-none"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 溢价空间与成本结构分析 -->
+        <section id="premium" class="scroll-mt-24">
+            <h2 class="text-2xl font-bold mb-6 text-morandi-main flex items-center">
+                <span class="w-1.5 h-8 bg-morandi-accent mr-3 rounded-full"></span>
+                溢价空间与成本结构分析
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                
+                <!-- Module 1: Patented Formulas -->
+                <div class="bg-white rounded-xl shadow-lg border-t-4 border-yellow-400 p-6 flex flex-col justify-between hover:shadow-xl transition-shadow duration-300">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-lg font-bold text-gray-800">1. 专利协同配方</h3>
+                            <span class="bg-yellow-50 text-yellow-700 text-xs px-2 py-1 rounded font-bold border border-yellow-100">科研溢价</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-6">如“海藻钙+D3+K2”引钙入骨技术，比单一补钙贵，但妈妈愿为“确切的身高管理”买单。</p>
+                        
+                        <!-- Visualization Bars -->
+                        <div class="space-y-5 mb-6">
+                            <!-- Premium Bar -->
+                            <div>
+                                <div class="flex justify-between text-xs mb-1">
+                                    <span class="text-gray-600 font-medium">用户接受溢价</span>
+                                    <span class="font-bold text-yellow-600">180%</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-3">
+                                    <div class="bg-yellow-500 h-3 rounded-full shadow-sm" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Cost Bar -->
+                            <div>
+                                <div class="flex justify-between text-xs mb-1">
+                                    <span class="text-gray-600 font-medium">生产成本增加</span>
+                                    <span class="font-bold text-gray-500">70%</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-3">
+                                    <div class="bg-gray-400 h-3 rounded-full shadow-sm" style="width: 35%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Profit Footer -->
+                    <div class="bg-yellow-50/50 rounded-lg p-3 flex justify-between items-center border border-yellow-100">
+                        <div class="text-yellow-800">
+                            <span class="block text-xs opacity-70">净利润空间</span>
+                            <span class="font-bold text-xl">+110%</span>
+                        </div>
+                        <div class="text-right text-xs text-gray-500 leading-tight">
+                            主要成本: <br><span class="font-medium text-gray-700">高研原料/MK-7(K2)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 2: Premium Formats (Zero Sugar Gummies) -->
+                <div class="bg-white rounded-xl shadow-lg border-t-4 border-green-500 p-6 flex flex-col justify-between hover:shadow-xl transition-shadow duration-300">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-lg font-bold text-gray-800">2. 无糖果胶软糖</h3>
+                            <span class="bg-green-50 text-green-700 text-xs px-2 py-1 rounded font-bold border border-green-100">体验溢价</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-6">木糖醇防龋齿+植物果胶（非明胶），口感极佳，解决孩子拒吃痛点，复购率极高。</p>
+                        
+                         <!-- Visualization Bars -->
+                         <div class="space-y-5 mb-6">
+                            <!-- Premium Bar -->
+                            <div>
+                                <div class="flex justify-between text-xs mb-1">
+                                    <span class="text-gray-600 font-medium">用户接受溢价</span>
+                                    <span class="font-bold text-green-600">120%</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-3">
+                                    <div class="bg-green-500 h-3 rounded-full shadow-sm" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Cost Bar -->
+                            <div>
+                                <div class="flex justify-between text-xs mb-1">
+                                    <span class="text-gray-600 font-medium">生产成本增加</span>
+                                    <span class="font-bold text-gray-500">40%</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-3">
+                                    <div class="bg-gray-400 h-3 rounded-full shadow-sm" style="width: 20%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profit Footer -->
+                    <div class="bg-green-50/50 rounded-lg p-3 flex justify-between items-center border border-green-100">
+                        <div class="text-green-800">
+                            <span class="block text-xs opacity-70">净利润空间</span>
+                            <span class="font-bold text-xl">+80%</span>
+                        </div>
+                        <div class="text-right text-xs text-gray-500 leading-tight">
+                            主要成本: <br><span class="font-medium text-gray-700">代糖/果胶/去腥工艺</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 3: Clean Label / Algae -->
+                <div class="bg-white rounded-xl shadow-lg border-t-4 border-blue-400 p-6 flex flex-col justify-between hover:shadow-xl transition-shadow duration-300">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-lg font-bold text-gray-800">3. 深海微藻/极净源</h3>
+                            <span class="bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded font-bold border border-blue-100">安全溢价</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-6">避开海洋重金属污染污染的鱼油，选用微藻DHA；0激素0致敏原背书，买安心。</p>
+                        
+                         <!-- Visualization Bars -->
+                         <div class="space-y-5 mb-6">
+                            <!-- Premium Bar -->
+                            <div>
+                                <div class="flex justify-between text-xs mb-1">
+                                    <span class="text-gray-600 font-medium">用户接受溢价</span>
+                                    <span class="font-bold text-blue-600">100%</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-3">
+                                    <div class="bg-blue-500 h-3 rounded-full shadow-sm" style="width: 50%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Cost Bar -->
+                            <div>
+                                <div class="flex justify-between text-xs mb-1">
+                                    <span class="text-gray-600 font-medium">生产成本增加</span>
+                                    <span class="font-bold text-gray-500">50%</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-3">
+                                    <div class="bg-gray-400 h-3 rounded-full shadow-sm" style="width: 25%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profit Footer -->
+                    <div class="bg-blue-50/50 rounded-lg p-3 flex justify-between items-center border border-blue-100">
+                        <div class="text-blue-800">
+                            <span class="block text-xs opacity-70">净利润空间</span>
+                            <span class="font-bold text-xl">+50%</span>
+                        </div>
+                        <div class="text-right text-xs text-gray-500 leading-tight">
+                            主要成本: <br><span class="font-medium text-gray-700">高纯度藻油/权威检测</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="bg-morandi-main/5 p-4 rounded-lg border border-morandi-main/20 text-center text-sm text-morandi-main font-medium">
+                💡 结论：<span class="font-bold">“零食化剂型（无糖软糖）”</span> 是打开孩子嘴巴、实现高频复购的金钥匙，其带来的利润空间远超传统胶囊制剂。
+            </div>
+        </section>
+
+        <!-- 5. 战略产品系列 -->
+        <section id="strategy" class="scroll-mt-24 pb-10">
+            <h2 class="text-2xl font-bold mb-6 text-morandi-main flex items-center">
+                <span class="w-1.5 h-8 bg-morandi-accent mr-3 rounded-full"></span>
+                战略产品系列总结
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 系列 1 -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 group">
+                    <div class="h-1.5 bg-morandi-accent group-hover:h-3 transition-all duration-300"></div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">节节高·成长骨粒</h3>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-0.5 rounded-full font-bold">爆款</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mb-5 uppercase tracking-wider font-semibold">Bone-Growth Matrix</p>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <span class="text-xs font-bold text-morandi-accent bg-morandi-accent/10 px-2 py-1 rounded inline-block mb-1">核心价值</span>
+                                <p class="text-sm text-gray-600 leading-snug">有机海藻钙 + 维生素D3 + 维生素K2（MK-7），精准领钙入骨；无糖鲜桃味软糖。</p>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold text-morandi-accent bg-morandi-accent/10 px-2 py-1 rounded inline-block mb-1">目标人群</span>
+                                <p class="text-sm text-gray-600 leading-snug">3-12岁处于猛长期、父母有身高焦虑的儿童。</p>
+                            </div>
+                            <div class="pt-4 border-t border-gray-100 mt-2">
+                                <p class="text-xs text-gray-500"><span class="font-bold text-morandi-main">战略标签：</span> 告别瞎补钙，抓住身高黄金期。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 系列 2 -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 group">
+                    <div class="h-1.5 bg-morandi-main group-hover:h-3 transition-all duration-300"></div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">亮瞳聪聪·DHA</h3>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-full font-bold">旗舰</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mb-5 uppercase tracking-wider font-semibold">Brain & Eye Smart</p>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <span class="text-xs font-bold text-morandi-accent bg-morandi-accent/10 px-2 py-1 rounded inline-block mb-1">核心价值</span>
+                                <p class="text-sm text-gray-600 leading-snug">帝斯曼T-free裂壶藻油（高纯无腥）+ 叶黄素酯。爆浆果冻口感，拒绝咬胶囊的恶心感。</p>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold text-morandi-accent bg-morandi-accent/10 px-2 py-1 rounded inline-block mb-1">目标人群</span>
+                                <p class="text-sm text-gray-600 leading-snug">经常看屏幕/网课、需要提升专注力的学龄儿童。</p>
+                            </div>
+                            <div class="pt-4 border-t border-gray-100 mt-2">
+                                <p class="text-xs text-gray-500"><span class="font-bold text-morandi-main">战略标签：</span> 脑眼双效同补，妈妈的鸡娃神器。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 系列 3 -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 group">
+                    <div class="h-1.5 bg-[#829496] group-hover:h-3 transition-all duration-300"></div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">黄金盾·免疫力包</h3>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full font-bold">长尾</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mb-5 uppercase tracking-wider font-semibold">Immune Shield Plus</p>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <span class="text-xs font-bold text-morandi-accent bg-morandi-accent/10 px-2 py-1 rounded inline-block mb-1">核心价值</span>
+                                <p class="text-sm text-gray-600 leading-snug">高纯乳铁蛋白 + 120亿双歧杆菌 + 维生素C/锌。温水即溶的酸甜直饮粉/滴剂。</p>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold text-morandi-accent bg-morandi-accent/10 px-2 py-1 rounded inline-block mb-1">目标人群</span>
+                                <p class="text-sm text-gray-600 leading-snug">换季易感冒、挑食肠胃差、刚上幼儿园的孩子。</p>
+                            </div>
+                            <div class="pt-4 border-t border-gray-100 mt-2">
+                                <p class="text-xs text-gray-500"><span class="font-bold text-morandi-main">战略标签：</span> 强健内护力，少往医院跑。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </div>
+    
+    <!-- Chart.js CDN (Placed here to ensure loading before execution) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 
-    <!-- 商品列表 -->
-    <div id="products" class="max-w-7xl mx-auto px-4 py-12">
-        <h3 class="text-2xl font-bold text-gray-900 mb-8">热门商品</h3>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- 商品1 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
-                <div class="h-48 bg-blue-100 flex items-center justify-center">
-                    <i class="fa fa-fan text-6xl text-blue-500"></i>
+    <!-- JavaScript Data & Logic -->
+    <script>
+        // Data for Charts (Updated for Kids Supplements)
+        const chartData = {
+            searchTrend: {
+                labels: ['基础钙片', 'D3+K2身高管理', '普通鱼油', '藻油DHA', '无糖软糖/滴剂'],
+                past: [45, 10, 30, 10, 5], // Past Year
+                current: [20, 35, 10, 30, 35]    // Current
+            },
+            drivers: {
+                labels: ['配方(协同吸收)', '剂型(软糖/好喝)', '成分(0添加/无糖)', '品牌/产地', '价格'],
+                current: [30, 30, 20, 10, 10],
+                future: [40, 35, 25, 5, 5]
+            },
+            gap: {
+                labels: ['高吸收钙(K2组合)', '无糖防龋齿软糖', '0腥味藻油果冻', '基础维生素片', '高糖儿童软糖'],
+                intent: [85, 80, 75, 30, 20],
+                conversion: [30, 25, 30, 80, 90] // Low conversion means high opportunity
+            },
+            // Premium data now used directly in chart creation (Visual Bars)
+        };
+
+        // Data for Pain Points (Updated for Kids Supplements)
+        const painPointsData = [
+            {
+                id: 1,
+                theme: "腥味大/难吞咽抗拒",
+                desc: "传统的鱼油DHA胶囊腥味极重，孩子咬破会作呕；大颗的钙片孩子吞不下去，每次吃保健品像打仗一样鸡飞狗跳。",
+                solution: "【去腥工艺+零食化剂型】升级T-free物理去腥藻油技术；全面普及“爆浆果冻”、“无糖果胶软糖”、“水蜜桃味直饮粉”，让孩子像吃零食一样主动索要。",
+                product: "推出“亮瞳聪聪·爆浆DHA”，主打“没有鱼腥味，只有水果香”。"
+            },
+            {
+                id: 2,
+                theme: "软糖太甜怕蛀牙",
+                desc: "为了孩子爱吃买软糖，但发现配料表第一位是白砂糖或麦芽糖浆，不仅导致儿童肥胖，还引发严重的龋齿焦虑。",
+                solution: "【护齿级代糖配方】全面采用木糖醇、赤藓糖醇或麦芽糖醇替代蔗糖，不仅0糖低卡，木糖醇还能抑制口腔细菌产酸，真正做到防龋齿。",
+                product: "强化“无糖护齿”标签，主打“好营养，不伤牙”。"
+            },
+            {
+                id: 3,
+                theme: "补了不吸收/便秘",
+                desc: "天天吃碳酸钙片，孩子身高没见长，反而经常说肚子胀、便秘，妈妈觉得钱白花了还受罪。",
+                solution: "【海藻钙+D3+K2金三角】摒弃难吸收的无机钙，改用高生物利用率的海藻钙或柠檬酸钙；加入D3促进肠道吸收，K2将血液中的钙精准引入骨骼，协同吸收不便秘。",
+                product: "推出“节节高·成长骨粒”，主打“补得进，留得住，入骨头”。"
+            },
+            {
+                id: 4,
+                theme: "性早熟/激素焦虑",
+                desc: "看新闻说某某保健品吃了导致儿童骨龄提前闭合或性早熟，家长对长高、长胖类的产品充满恐惧，宁愿不补也不敢乱吃。",
+                solution: "【极净标签+三方检测】承诺0激素、0人工色素、0防腐剂。在商详页和包装上公示SGS等权威机构的“不含激素/重金属”质检报告，建立绝对信任。",
+                product: "全线应用“Clean Label”体系，主打“每一口都经得起显微镜考验”。"
+            },
+            {
+                id: 5,
+                theme: "过敏源隐藏危机",
+                desc: "敏宝（易过敏体质儿童）越来越多，很多保健品胶囊使用牛骨明胶，或生产线混有麸质、大豆、乳制品，极易引发过敏风险。",
+                solution: "【全植物基+八大无敏】采用海藻多糖或植物果胶制作外衣/软糖，建立独立生产线，明确标注“无麸质、无乳制品、无坚果”等八大无敏承诺。",
+                product: "推出“敏宝安心系列”，主打“植物基萃取，敏宝放心吃”。"
+            }
+        ];
+
+        // Chart Configuration
+        window.onload = function() {
+            // Ensure Chart is available
+            if (typeof Chart === 'undefined') {
+                console.error("Chart.js not loaded");
+                return;
+            }
+
+            // Chart A
+            new Chart(document.getElementById('chartA'), {
+                type: 'bar',
+                data: {
+                    labels: chartData.searchTrend.labels,
+                    datasets: [{
+                        label: '一年前关注度 (%)',
+                        data: chartData.searchTrend.past,
+                        backgroundColor: '#f0f4f1', // light color
+                        borderRadius: 4
+                    }, {
+                        label: '现在关注度 (%)',
+                        data: chartData.searchTrend.current,
+                        backgroundColor: '#7ba3a8', // main color
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: { 
+                        y: { beginAtZero: true, grid: { display: false } },
+                        x: { grid: { display: false } }
+                    },
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+
+            // Chart B
+            new Chart(document.getElementById('chartB'), {
+                type: 'radar',
+                data: {
+                    labels: chartData.drivers.labels,
+                    datasets: [{
+                        label: '现有占比',
+                        data: chartData.drivers.current,
+                        borderColor: '#e8b77b',
+                        backgroundColor: 'rgba(232, 183, 123, 0.2)',
+                        pointBackgroundColor: '#e8b77b'
+                    }, {
+                        label: '未来一年预测',
+                        data: chartData.drivers.future,
+                        borderColor: '#7ba3a8',
+                        backgroundColor: 'rgba(123, 163, 168, 0.5)',
+                        pointBackgroundColor: '#7ba3a8'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom' } },
+                    scales: {
+                        r: {
+                            ticks: { backdropColor: 'transparent' }
+                        }
+                    }
+                }
+            });
+
+            // Chart C
+            new Chart(document.getElementById('chartC'), {
+                type: 'bar',
+                data: {
+                    labels: chartData.gap.labels,
+                    datasets: [{
+                        label: '搜索意图 (高关注)',
+                        data: chartData.gap.intent,
+                        backgroundColor: '#e8b77b',
+                        order: 1,
+                        borderRadius: 4
+                    }, {
+                        label: '实际转化 (供给足)',
+                        data: chartData.gap.conversion,
+                        type: 'line',
+                        borderColor: '#7ba3a8',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#ffffff',
+                        pointBorderColor: '#7ba3a8',
+                        pointRadius: 4,
+                        tension: 0.4,
+                        order: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: { 
+                        y: { beginAtZero: true, grid: { color: '#f3f4f6' } },
+                        x: { grid: { display: false } }
+                    },
+                    plugins: { 
+                        legend: { position: 'bottom' },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.raw + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Initialize Pain Points Interactive List
+            renderPainPoints();
+        };
+
+        // Pain Points Logic
+        let activePainPointId = 1;
+
+        function renderPainPoints() {
+            const listEl = document.getElementById('painPointList');
+            const detailEl = document.getElementById('painPointDetail');
+            
+            // Render List
+            listEl.innerHTML = painPointsData.map(item => `
+                <li class="cursor-pointer transition-all duration-200 ${item.id === activePainPointId ? 'bg-white border-l-4 border-morandi-main shadow-sm z-10 relative' : 'hover:bg-gray-100 border-l-4 border-transparent opacity-80 hover:opacity-100'}"
+                    onclick="setActivePainPoint(${item.id})">
+                    <div class="p-4">
+                        <div class="font-bold text-gray-800 ${item.id === activePainPointId ? 'text-morandi-main' : ''}">${item.theme}</div>
+                        <div class="text-xs text-gray-500 mt-1 truncate">${item.desc}</div>
+                    </div>
+                </li>
+            `).join('');
+
+            // Render Detail with Animation
+            const activeItem = painPointsData.find(p => p.id === activePainPointId);
+            
+            // Remove animation class to re-trigger it
+            detailEl.classList.remove('animate-fade-in');
+            void detailEl.offsetWidth; // Trigger reflow
+            detailEl.classList.add('animate-fade-in');
+
+            detailEl.innerHTML = `
+                <div>
+                    <h4 class="text-xs font-bold text-morandi-accent uppercase tracking-widest mb-2 flex items-center">
+                        <span class="w-2 h-2 bg-morandi-accent rounded-full mr-2"></span>用户痛点描述
+                    </h4>
+                    <p class="text-gray-700 text-lg leading-relaxed border-b border-gray-100 pb-4">${activeItem.desc}</p>
                 </div>
-                <div class="p-4">
-                    <div class="text-xs text-blue-600 mb-1">戴森</div>
-                    <h4 class="font-semibold text-gray-900 mb-2">戴森 HD15 吹风机</h4>
-                    <p class="text-xs text-gray-500 mb-3">智能温控 | 防飞翘风嘴</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-xl font-bold text-red-600">¥3199</span>
-                        <button class="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700">查看</button>
+                <div class="bg-blue-50/50 p-5 rounded-lg border border-blue-100 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-blue-400"></div>
+                    <h4 class="text-xs font-bold text-morandi-main uppercase tracking-widest mb-2">C2M 定制方案</h4>
+                    <p class="text-gray-800 text-base font-medium leading-relaxed">${activeItem.solution}</p>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">新品规划建议</h4>
+                    <div class="flex items-center text-morandi-accent font-bold text-lg p-3 bg-gray-50 rounded-lg">
+                        <svg class="w-6 h-6 mr-3 text-morandi-main" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <span>${activeItem.product}</span>
                     </div>
                 </div>
-            </div>
+            `;
+        }
 
-            <!-- 商品2 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
-                <div class="h-48 bg-purple-100 flex items-center justify-center">
-                    <i class="fa fa-rocket text-6xl text-purple-500"></i>
-                </div>
-                <div class="p-4">
-                    <div class="text-xs text-blue-600 mb-1">徕芬</div>
-                    <h4 class="font-semibold text-gray-900 mb-2">徕芬 LF03 吹风机</h4>
-                    <p class="text-xs text-gray-500 mb-3">11万转马达 | 2亿负离子</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-xl font-bold text-red-600">¥599</span>
-                        <button class="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700">查看</button>
-                    </div>
-                </div>
-            </div>
+        function setActivePainPoint(id) {
+            activePainPointId = id;
+            renderPainPoints();
+        }
 
-            <!-- 商品3 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
-                <div class="h-48 bg-yellow-100 flex items-center justify-center">
-                    <i class="fa fa-mobile-alt text-6xl text-yellow-500"></i>
-                </div>
-                <div class="p-4">
-                    <div class="text-xs text-blue-600 mb-1">小米</div>
-                    <h4 class="font-semibold text-gray-900 mb-2">小米 H501 吹风机</h4>
-                    <p class="text-xs text-gray-500 mb-3">62m/s风速 | 温控监测</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-xl font-bold text-red-600">¥279</span>
-                        <button class="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700">查看</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 商品4 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
-                <div class="h-48 bg-green-100 flex items-center justify-center">
-                    <i class="fa fa-cut text-6xl text-green-500"></i>
-                </div>
-                <div class="p-4">
-                    <div class="text-xs text-blue-600 mb-1">飞科</div>
-                    <h4 class="font-semibold text-gray-900 mb-2">飞科 FH6232 吹风机</h4>
-                    <p class="text-xs text-gray-500 mb-3">2000W大功率 | 热量均衡</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-xl font-bold text-red-600">¥59</span>
-                        <button class="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700">查看</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-8 mt-16 text-center">
-        <p>© 2024 NextChain Store. GMC Merchant ID: 5715277387</p>
-    </footer>
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
